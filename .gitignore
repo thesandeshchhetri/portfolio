@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+.env
+.env.*
+!.env.example
+uploads/*
+!uploads/.gitkeep
+public/photos/*
+!public/photos/.gitkeep
+npm-debug.log*
+.DS_Store
