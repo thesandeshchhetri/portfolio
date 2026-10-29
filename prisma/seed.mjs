@@ -1,0 +1,6 @@
+import { PrismaClient } from '@prisma/client'
+const p=new PrismaClient()
+if(!(await p.project.count()))await p.project.createMany({data:[{name:'YUKIN School Management System',blurb:'A multi-tenant SaaS platform where many schools run on one system, each with its own isolated data and security rules.',stack:'Django, React, MySQL, Docker'},{name:'YUKIN Hotel',blurb:'A management system for a single hotel, rebuilt across several stacks.',stack:'Next.js, Node/Express, Django, MySQL'},{name:'yukin-dialer',blurb:'A full-stack SIP softphone made for call-center agents.',stack:'React, Django, Redis, Celery'},{name:'Solterra Cliff House',blurb:'A hotel website with a full CMS so staff can edit it without a developer.',stack:'Next.js 14, TypeScript, TailwindCSS'}]})
+if(!(await p.experience.count()))await p.experience.createMany({data:[{title:'ekGhanti Services Pvt. Ltd.',org:'Kathmandu, Nepal',period:'',details:'Technical Support Engineer, QA Analyst and Junior Business Development.'},{title:'Tribhuvan University',org:'Mahendra Ratna Campus',period:'',details:'Completing a Bachelor of ICT Education.'}]})
+if(!(await p.ride.count()))for(const place of ['Rasuwa','Manungkot','Nagarkot','Chitwan','Biratnagar','Pokhara','Ilam'])await p.ride.create({data:{place}})
+await p.$disconnect()
