@@ -1,0 +1,7 @@
+import fs from 'node:fs'
+import path from 'node:path'
+import Script from 'next/script'
+import { prisma } from '@/lib/db'
+export const dynamic='force-dynamic'
+const esc=(s:unknown)=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c] as string))
+export default async function Home(){const [rides,projects,exp]=await Promise.all([prisma.ride.findMany({orderBy:{id:'desc'}}),prisma.project.findMany({orderBy:{id:'asc'}}),prisma.experience.findMany({orderBy:{id:'asc'}})]);let html=fs.readFileSync(path.join(process.cwd(),'src/template.html'),'utf8');const R=rides.map(r=>`<figure><div class="ph" data-f="${esc(r.place)}">${r.photo?`<img src="/uploads/${esc(r.photo)}" alt="${esc(r.place)}">`:''}</div><figcaption>${esc(r.place)}</figcaption>${r.story||r.km?`<p class="rs">${esc(r.story)} ${r.km?esc(r.km)+' km':''}</p>`:''}</figure>`).join('');const P=projects.map(x=>`<article class="proj"><h3>${esc(x.name)}</h3><p>${esc(x.blurb)}</p><small>${esc(x.stack)}</small></article>`).join('');const E=exp.map(x=>`<div><h4>${esc(x.title)}</h4><p>${esc([x.org,x.period].filter(Boolean).join(', '))}</p><p>${esc(x.details)}</p></div>`).join('');html=html.replace('{{RIDES}}',()=>R).replace('{{PROJECTS}}',()=>P).replace('{{EXPERIENCE}}',()=>E).replace('{{RIDECOUNT}}',String(rides.length));return <><div dangerouslySetInnerHTML={{__html:html}}/><Script src="/portfolio.js" strategy="afterInteractive"/></>}
