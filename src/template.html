@@ -11,6 +11,20 @@
 <div class="wrap" id="b-machine"><section class="carbon"><h2>The machine: <em>R15 V3</em></h2><div class="stat"><b>155</b><span>cc, Yamaha R15 V3</span></div><div class="stat"><b id="yrs">9</b><span>years in the saddle</span></div><div class="stat"><b>{{RIDECOUNT}}</b><span>destinations and counting</span></div><div class="liv"><span>Doraemon livery:</span><i style="background:#0096E0"></i><i style="background:#fff"></i><i style="background:#E60012"></i><i style="background:#FFD100"></i></div></section></div>
 <section class="dirt" id="b-rides"><div class="wrap"><h2>Where the R15 has been</h2><div class="rides">{{RIDES}}</div></div></section><section class="cafe" id="b-follow"><div class="stripes"></div><div class="wrap"><h2>Follow the ride</h2><div class="soc"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div></div></section></div>
 <div id="bar"></div><div id="hud" aria-hidden="true"><b id="spd">0</b><span>km/h</span></div><button id="thr" aria-pressed="false" aria-label="Twist the throttle to switch between work and ride"><span class="grip"></span><span><small>Twist or press T</small><b id="lbl">Work</b></span></button><div id="ov" data-to="bike" aria-hidden="true">
+  <div class="rpm-panel" aria-hidden="true">
+    <div class="rpm-heading"><span>ENGINE CONTROL</span><b>R15 V3</b></div>
+    <svg class="rpm-gauge" viewBox="0 0 320 190" role="presentation">
+      <defs><linearGradient id="rpmGradient" x1="0" x2="1"><stop offset="0" stop-color="#00b4ff"/><stop offset=".68" stop-color="#ffd100"/><stop offset="1" stop-color="#ff3155"/></linearGradient></defs>
+      <path class="rpm-track" d="M35 155 A125 125 0 0 1 285 155"/>
+      <path class="rpm-active" d="M35 155 A125 125 0 0 1 285 155"/>
+      <g class="rpm-ticks"><path d="M35 155l13-4M49 94l12 6M91 49l8 12M160 30v15M229 49l-8 12M271 94l-12 6M285 155l-13-4"/></g>
+      <path class="rpm-needle" d="M160 155L160 49"/>
+      <circle cx="160" cy="155" r="9" class="rpm-hub"/>
+      <text x="160" y="184" text-anchor="middle" class="rpm-unit">x1000 RPM</text>
+    </svg>
+    <div class="rpm-reading"><strong id="rpm-value">1.0</strong><span>× 1000 RPM</span></div>
+    <div class="rpm-status" id="rpm-status">IGNITION SEQUENCE</div>
+  </div>
   <div class="transition-scene bike-scene">
     <div class="speed-lines"></div>
     <svg class="transition-bike" viewBox="0 0 360 180" role="presentation">
