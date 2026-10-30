@@ -30,3 +30,21 @@ model Experience {
   period  String
   details String @db.Text
 }
+
+model ContentItem {
+  id        Int      @id @default(autoincrement())
+  kind      String   @db.VarChar(40)
+  title     String   @db.VarChar(180)
+  data      Json
+  sortOrder Int      @default(0)
+  visible   Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([kind, visible, sortOrder])
+}
+
+model SiteSettings {
+  id        Int      @id @default(1)
+  data      Json
+  updatedAt DateTime @updatedAt
+}
