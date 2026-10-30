@@ -381,3 +381,7 @@
   #ov[data-to=work] .work-scene:after,#ov[data-to=work] .terminal-window{animation:none!important}
   #ov .rpm-meter-fill{transition:none}
 }
+
+
+/* The RPM telemetry belongs only to the Ride arrival transition. */
+#ov[data-to=work] .rpm-panel{display:none!important}
