@@ -13,15 +13,11 @@
 <div id="bar"></div><button id="sound-toggle" type="button" aria-pressed="false" aria-label="Enable transition engine sound"><span class="sound-icon" aria-hidden="true">♪</span><span id="sound-label">Sound off</span></button><div id="hud" aria-hidden="true"><b id="spd">0</b><span>km/h</span></div><button id="thr" aria-pressed="false" aria-label="Twist the throttle to switch between work and ride"><span class="grip"></span><span><small>Twist or press T</small><b id="lbl">Work</b></span></button><div id="ov" data-to="bike" aria-hidden="true">
   <div class="rpm-panel" aria-hidden="true">
     <div class="rpm-heading"><span>ENGINE CONTROL</span><b>R15 V3</b></div>
-    <svg class="rpm-gauge" viewBox="0 0 320 190" role="presentation">
-      <defs><linearGradient id="rpmGradient" x1="0" x2="1"><stop offset="0" stop-color="#00b4ff"/><stop offset=".68" stop-color="#ffd100"/><stop offset="1" stop-color="#ff3155"/></linearGradient></defs>
-      <path class="rpm-track" d="M35 155 A125 125 0 0 1 285 155"/>
-      <path class="rpm-active" d="M35 155 A125 125 0 0 1 285 155"/>
-      <g class="rpm-ticks"><path d="M35 155l13-4M49 94l12 6M91 49l8 12M160 30v15M229 49l-8 12M271 94l-12 6M285 155l-13-4"/></g>
-      <path class="rpm-needle" d="M160 155L160 49"/>
-      <circle cx="160" cy="155" r="9" class="rpm-hub"/>
-      <text x="160" y="184" text-anchor="middle" class="rpm-unit">x1000 RPM</text>
-    </svg>
+    <div class="rpm-meter" role="presentation">
+      <div class="rpm-meter-labels"><span>1K</span><span>3K</span><span>5K</span><span>7K</span><span>9K</span><span>10K</span></div>
+      <div class="rpm-meter-track"><div class="rpm-meter-fill"></div><i class="rpm-meter-marker"></i></div>
+      <div class="rpm-meter-zones"><span>LOW</span><span>CRUISE</span><span>HIGH</span><span>REDLINE</span></div>
+    </div>
     <div class="rpm-reading"><strong id="rpm-value">1.0</strong><span>× 1000 RPM</span></div>
     <div class="rpm-status" id="rpm-status">IGNITION SEQUENCE</div>
   </div>
