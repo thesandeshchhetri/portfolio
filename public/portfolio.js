@@ -6,7 +6,15 @@
   const ov=document.getElementById('ov');
   const rpmValue=document.getElementById('rpm-value');
   const rpmStatus=document.getElementById('rpm-status');
+  const rpmPanel= document.querySelector('.rpm-panel');
   const bar=document.getElementById('bar');
+  const soundBtn=document.getElementById('sound-toggle');
+  const soundLabel=document.getElementById('sound-label');
+  let soundEnabled=false;
+  try{soundEnabled=localStorage.getItem('portfolio-engine-sound')==='on'}catch(_){}
+  function paintSound(){if(soundBtn){soundBtn.setAttribute('aria-pressed',String(soundEnabled));soundBtn.setAttribute('aria-label',soundEnabled?'Disable transition engine sound':'Enable transition engine sound')}if(soundLabel)soundLabel.textContent=soundEnabled?'Sound on':'Sound off'}
+  paintSound();
+  if(soundBtn)soundBtn.addEventListener('click',()=>{soundEnabled=!soundEnabled;try{localStorage.setItem('portfolio-engine-sound',soundEnabled?'on':'off')}catch(_){}paintSound()});
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
   if(!body||!btn||!ov)return;
 
@@ -100,6 +108,8 @@
     const normalized=clamp((rpm-1000)/9000,0,1);
     const angle=-55+normalized*110;
     ov.style.setProperty('--rpm-angle',angle+'deg');
+    ov.style.setProperty('--rpm-level',(normalized*100)+'%');
+    ov.dataset.phase=direction==='bike'?'ride':'work';
     ov.style.setProperty('--transition-progress',String(progress));
     if(rpmValue)rpmValue.textContent=(rpm/1000).toFixed(1);
     if(rpmStatus){
@@ -115,13 +125,15 @@
     const from=body.dataset.side||'work';
     const to=from==='work'?'bike':'work';
     const direction=to==='bike'?'bike':'work';
-    const engine=engineStart(direction);
+    const engine=soundEnabled?engineStart(direction):null;
     ov.dataset.to=to;
+    ov.dataset.direction=direction;
     ov.style.setProperty('--transition-progress','0');
     ov.classList.remove('on');
     void ov.offsetWidth;
     ov.classList.add('on');
     btn.disabled=true;
+    if(soundBtn)soundBtn.disabled=true;
     if(navigator.vibrate&&!reducedMotion.matches){
       try{navigator.vibrate(direction==='bike'?[45,30,85,30,120]:[75,35,55])}catch(_){}
     }
@@ -146,6 +158,7 @@
           ov.classList.remove('on');
           engineStop(engine);
           btn.disabled=false;
+          if(soundBtn)soundBtn.disabled=false;
           busy=false;
         },reducedMotion.matches?60:180);
       }

@@ -202,3 +202,235 @@
   #ov .transition-bike,#ov .terminal-window{opacity:1;transform:none;filter:none}
   #ov .code-line{opacity:1}
 }
+
+
+/* Focused polish for the original two-world design */
+.work header,.b-head{position:relative;z-index:2}
+.work header .wrap{min-height:62px}
+.work nav a,.b-head nav a{transition:opacity .2s ease,transform .2s ease}
+.work nav a:hover,.b-head nav a:hover{opacity:.68;transform:translateY(-2px)}
+.w-hero{position:relative;isolation:isolate}
+.w-hero:after{content:"";position:absolute;z-index:-1;right:5%;top:8%;width:clamp(140px,24vw,340px);aspect-ratio:1;border:1px solid #1230ff24;border-radius:50%;box-shadow:0 0 0 24px #1230ff08,0 0 0 48px #1230ff05}
+.mq{overflow:hidden;border-block:1px solid #0002;background:#d8dbe1}
+.mq>div{width:max-content;animation:marquee-drift 34s linear infinite;font:700 .78rem ui-monospace,monospace;letter-spacing:.12em;padding:12px 0}
+@keyframes marquee-drift{to{transform:translateX(-50%)}}
+.proj{position:relative;transition:padding .25s ease,background .25s ease}
+.proj:hover{padding-left:16px;background:#ffffff80}
+.proj h3{letter-spacing:-.025em}
+.stack b{font-size:.92rem;transition:transform .18s ease,background .18s ease,color .18s ease}
+.stack b:hover{transform:translateY(-3px);background:#1230ff;color:#fff}
+.two>div{transition:background .2s ease}
+.two>div:hover{background:#f2f4ff}
+.contact{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.contact a{transition:transform .2s ease,box-shadow .2s ease}
+.contact a:hover{transform:translate(-3px,-3px);box-shadow:11px 11px #000}
+.b-head{background:#090b11;border-bottom:1px solid #ffffff20}
+.b-hero{overflow:hidden;min-height:440px}
+.b-hero:after{content:"";position:absolute;inset:auto -10% -75% 28%;height:75%;border-radius:50%;border:1px solid #00b4ff30;box-shadow:0 0 0 26px #00b4ff08,0 0 0 52px #00b4ff05;pointer-events:none}
+.b-hero .wrap{position:relative;z-index:1}
+.ph{border-color:#ffffff45;box-shadow:0 24px 70px #0008}
+.ph img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.ph:hover img{transform:scale(1.045)}
+.carbon{border-radius:3px;box-shadow:0 20px 60px #0006}
+.stat{border-left:2px solid #00b4ff55;padding-left:18px}
+.rides figure{min-width:0;padding:14px;background:#080a0f;border:1px solid #ffffff20;transition:transform .25s ease,border-color .25s ease}
+.rides figure:hover{transform:translateY(-5px);border-color:#00b4ff88}
+.rides .ph{aspect-ratio:16/10}
+.rides figcaption{font-size:clamp(1.2rem,2.6vw,1.7rem)}
+.ride-note{max-width:620px;margin:0 auto;font-size:1.1rem;line-height:1.6;color:#3b3b3b}
+#sound-toggle{position:fixed;left:18px;bottom:78px;z-index:55;display:flex;align-items:center;gap:9px;padding:10px 15px;border:1px solid #ffffff50;border-radius:999px;background:#080b12eF;color:#fff;font:700 11px ui-monospace,Consolas,monospace;letter-spacing:.08em;cursor:pointer;backdrop-filter:blur(12px);box-shadow:0 8px 28px #0005;transition:transform .2s ease,border-color .2s ease,opacity .2s ease}
+#sound-toggle:hover{transform:translateY(-2px);border-color:#00b4ff}
+#sound-toggle[aria-pressed=true]{border-color:#00b4ff;color:#9ce6ff}
+#sound-toggle:disabled{opacity:.5;cursor:wait}
+.sound-icon{font-size:16px;line-height:1}
+#thr{box-shadow:0 10px 32px #0007;transition:transform .2s ease,box-shadow .2s ease}
+#thr:hover{transform:translateY(-2px);box-shadow:0 14px 38px #0009}
+#thr:disabled{opacity:.65;cursor:wait}
+#hud{border-radius:4px;font-variant-numeric:tabular-nums}
+@media(max-width:700px){
+  .work header .wrap,.b-head .wrap{align-items:flex-start;gap:14px;flex-direction:column}
+  .work nav,.b-head nav{width:100%;gap:16px;overflow-x:auto;white-space:nowrap;padding-bottom:3px}
+  .work nav a,.b-head nav a{font-size:.88rem}
+  .w-hero .row{grid-template-columns:1fr;gap:18px}
+  .tag{justify-self:start;font-size:1rem;max-width:100%;box-shadow:5px 5px #000}
+  .contact{grid-template-columns:1fr}
+  .b-hero{padding:44px 0 64px;min-height:0}
+  .b-hero .wrap{grid-template-columns:1fr;gap:24px}
+  .b-hero .ph{max-width:620px}
+  .carbon{grid-template-columns:1fr 1fr}
+  .carbon h2,.liv{grid-column:1/-1}
+  #sound-toggle{left:12px;bottom:76px}
+  #thr{right:12px;bottom:12px}
+  #hud{left:12px;bottom:16px}
+}
+@media(max-width:390px){
+  .carbon{grid-template-columns:1fr}
+  .carbon h2,.liv{grid-column:auto}
+  #sound-toggle{bottom:72px}
+  #sound-toggle span:last-child{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .mq>div{animation:none}
+  .proj,.stack b,.two>div,.contact a,.ph img,.rides figure,#thr,#sound-toggle{transition:none}
+}
+
+
+/* Use the owner's real motorcycle photo, not a generated bike illustration */
+.bike-photo{aspect-ratio:4/3;background:#080b12}
+.bike-photo:after{display:none}
+.bike-photo img{object-fit:cover;object-position:center}
+#ov .transition-bike{display:block;object-fit:contain;object-position:center;border:0;border-radius:0;background:transparent}
+#ov .transition-bike .wh{animation:none}
+@media(prefers-reduced-motion:reduce){#ov .transition-bike{animation:none!important}}
+
+
+
+/* Distinct destination transitions: road acceleration for Ride, system boot for Work */
+#ov[data-to=bike] .bike-scene{isolation:isolate}
+#ov[data-to=bike] .bike-scene:before{
+  content:"";position:absolute;inset:-20%;
+  z-index:0;pointer-events:none;
+  background:
+    linear-gradient(112deg,transparent 0 39%,#00baff16 40%,transparent 41% 100%),
+    repeating-linear-gradient(168deg,transparent 0 48px,#8bdfff24 49px 51px,transparent 52px 104px);
+  transform:translateX(-35%) skewX(-12deg);
+  animation:ride-road-rush 1.25s cubic-bezier(.15,.75,.25,1) both;
+}
+#ov[data-to=bike] .bike-scene:after{
+  content:"";position:absolute;z-index:0;left:50%;top:58%;
+  width:min(90vw,680px);aspect-ratio:2.5/1;border:1px solid #00baff55;
+  border-radius:50%;transform:translate(-50%,-50%) scale(.25);
+  box-shadow:0 0 0 22px #00baff0d,0 0 0 48px #00baff09;
+  animation:ride-radial-pulse 1.25s ease-out both;
+}
+#ov[data-to=bike] .transition-bike{
+  z-index:2;transform-origin:center;
+  animation:ride-bike-arrival 1.85s cubic-bezier(.12,.78,.2,1) both;
+}
+@keyframes ride-road-rush{
+  0%{opacity:0;transform:translateX(-55%) skewX(-12deg)}
+  25%{opacity:.8}
+  100%{opacity:.2;transform:translateX(35%) skewX(-12deg)}
+}
+@keyframes ride-radial-pulse{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.25)}
+  35%{opacity:.8}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.45)}
+}
+@keyframes ride-bike-arrival{
+  0%{opacity:0;transform:translate3d(-115vw,35px,0) scale(.58) rotate(-3deg);filter:blur(8px) drop-shadow(0 0 0 #00baff)}
+  48%{opacity:1;transform:translate3d(3vw,0,0) scale(1.04) rotate(0);filter:blur(0) drop-shadow(0 0 28px #00baff99)}
+  68%,100%{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0) drop-shadow(0 0 18px #00baff66)}
+}
+#ov[data-to=work] .work-scene{isolation:isolate}
+#ov[data-to=work] .work-scene:before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    linear-gradient(#9cffb012 1px,transparent 1px),
+    linear-gradient(90deg,#9cffb012 1px,transparent 1px);
+  background-size:34px 34px;
+  mask-image:linear-gradient(90deg,transparent,#000 35%,#000 80%,transparent);
+  animation:work-grid-boot 1.15s ease-out both;
+}
+#ov[data-to=work] .work-scene:after{
+  content:"";position:absolute;z-index:3;left:0;right:0;top:0;height:2px;
+  background:linear-gradient(90deg,transparent,#9cffb0,transparent);
+  box-shadow:0 0 22px #9cffb0;
+  animation:work-scan 1.15s ease-in-out both;
+}
+#ov[data-to=work] .terminal-window{
+  position:relative;z-index:2;
+  animation:work-terminal-boot 1.45s cubic-bezier(.18,.78,.2,1) both;
+}
+#ov[data-to=work] .terminal-top{border-bottom:1px solid #9cffb033}
+@keyframes work-grid-boot{
+  0%{opacity:0;transform:scale(1.12);filter:blur(8px)}
+  55%{opacity:.8;filter:blur(0)}
+  100%{opacity:.35;transform:scale(1);filter:blur(0)}
+}
+@keyframes work-scan{
+  0%{opacity:0;transform:translateY(0)}
+  18%{opacity:1}
+  100%{opacity:0;transform:translateY(100vh)}
+}
+@keyframes work-terminal-boot{
+  0%{opacity:0;transform:translate3d(48vw,0,0) perspective(900px) rotateY(-18deg) scale(.88);filter:blur(12px)}
+  58%{opacity:1;transform:translate3d(-8px,0,0) perspective(900px) rotateY(2deg) scale(1.015);filter:blur(0)}
+  78%,100%{opacity:1;transform:translate3d(0,0,0) perspective(900px) rotateY(0) scale(1);filter:blur(0)}
+}
+
+/* Compact telemetry-style RPM bar replaces the decorative analog dial */
+#ov .rpm-gauge{display:none}
+#ov .rpm-meter{width:min(100%,330px);margin:clamp(8px,1.5vh,16px) auto 2px;text-align:left}
+#ov .rpm-meter-labels,#ov .rpm-meter-zones{display:flex;justify-content:space-between;gap:4px;font:700 9px ui-monospace,Consolas,monospace;letter-spacing:.08em;color:#aebdca}
+#ov .rpm-meter-track{position:relative;height:15px;margin:9px 0 7px;border:1px solid #ffffff35;border-radius:999px;background:repeating-linear-gradient(90deg,#ffffff12 0 9%,transparent 9% 10%),#080d14;overflow:visible}
+#ov .rpm-meter-fill{height:100%;width:var(--rpm-level,0%);border-radius:999px;background:linear-gradient(90deg,#00baff 0%,#42d6bb 48%,#ffd166 78%,#ff405c 100%);box-shadow:0 0 16px #00baff55;transition:width .045s linear}
+#ov .rpm-meter-marker{position:absolute;top:50%;left:var(--rpm-level,0%);width:3px;height:23px;border-radius:2px;background:#fff;box-shadow:0 0 10px #fff;transform:translate(-50%,-50%)}
+#ov .rpm-meter-zones{font-size:8px;opacity:.65}
+#ov .rpm-reading{margin-top:12px}
+#ov .rpm-reading strong{font-size:clamp(2.6rem,7vh,4rem)}
+@media(max-width:600px){
+  #ov .rpm-meter{width:min(100%,285px);margin-top:5px}
+  #ov .rpm-meter-track{height:12px;margin:7px 0}
+  #ov .rpm-meter-labels{font-size:8px}
+  #ov .rpm-meter-zones{font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){
+  #ov[data-to=bike] .bike-scene:before,#ov[data-to=bike] .bike-scene:after,
+  #ov[data-to=bike] .transition-bike,#ov[data-to=work] .work-scene:before,
+  #ov[data-to=work] .work-scene:after,#ov[data-to=work] .terminal-window{animation:none!important}
+  #ov .rpm-meter-fill{transition:none}
+}
+
+
+/* The RPM telemetry belongs only to the Ride arrival transition. */
+#ov[data-to=work] .rpm-panel{display:none!important}
+
+
+/* R15-inspired tachometer: keep the transition focused on the RPM display only. */
+#ov .rpm-panel{
+  width:min(82vw,440px);
+  padding:15px 18px 13px;
+  border:1px solid #ffffff24;
+  border-radius:8px;
+  background:linear-gradient(180deg,#111923f2,#05090ff5);
+  box-shadow:0 18px 70px #000b,0 0 34px #00b4ff18;
+}
+#ov .rpm-meter{width:100%;margin:0 auto;text-align:left}
+#ov .rpm-meter-labels{
+  display:flex;justify-content:space-between;gap:5px;
+  padding:0 1px;color:#c4d0dc;
+  font:700 10px ui-monospace,Consolas,monospace;
+}
+#ov .rpm-meter-track{
+  position:relative;height:23px;margin:7px 0 0;
+  border:1px solid #8796a655;border-radius:2px;
+  background:#02060b;overflow:hidden;
+  box-shadow:inset 0 2px 7px #000c;
+}
+#ov .rpm-meter-fill{
+  height:100%;width:var(--rpm-level,0%);
+  border-radius:0;
+  background:
+    repeating-linear-gradient(90deg,transparent 0 13px,#05090f 13px 16px),
+    linear-gradient(90deg,#13a9f4 0%,#32d6ad 58%,#f5d34e 82%,#ef414b 100%);
+  box-shadow:0 0 13px #00baff55;
+  transition:width .045s linear;
+}
+#ov .rpm-meter-marker{display:none}
+#ov .rpm-reading{margin-top:9px;gap:6px}
+#ov .rpm-reading strong{
+  font:700 clamp(1.8rem,5vh,2.7rem)/1 'Racing Sans One','Arial Black',sans-serif;
+  color:#f3f7fb;text-shadow:0 0 15px #00b4ff45;
+}
+#ov .rpm-reading span{
+  color:#9eafbd;font:700 9px ui-monospace,Consolas,monospace;
+  letter-spacing:.12em;
+}
+@media(max-width:600px){
+  #ov .rpm-panel{width:min(88vw,340px);padding:11px 12px 10px}
+  #ov .rpm-meter-track{height:18px;margin-top:6px}
+  #ov .rpm-meter-labels{font-size:9px}
+  #ov .rpm-reading{margin-top:7px}
+}
+@media(prefers-reduced-motion:reduce){#ov .rpm-meter-fill{transition:none}}
