@@ -1,18 +1,32 @@
-generator client { provider = "prisma-client-js" }
-datasource db { provider = "mysql"
-  url = env("DATABASE_URL") }
-model Ride { id Int @id @default(autoincrement())
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Ride {
+  id    Int      @id @default(autoincrement())
   place String
-  date DateTime?
-  km Int?
-  story String? @db.Text
-  photo String? }
-model Project { id Int @id @default(autoincrement())
-  name String
+  date  DateTime?
+  km    Int?
+  story String?  @db.Text
+  photo String?
+}
+
+model Project {
+  id    Int    @id @default(autoincrement())
+  name  String
   blurb String @db.Text
-  stack String }
-model Experience { id Int @id @default(autoincrement())
-  title String
-  org String
-  period String
-  details String @db.Text }
+  stack String
+}
+
+model Experience {
+  id      Int    @id @default(autoincrement())
+  title   String
+  org     String
+  period  String
+  details String @db.Text
+}
