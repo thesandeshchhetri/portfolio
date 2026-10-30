@@ -25,3 +25,33 @@
 .transition-caption{font:700 clamp(13px,2.4vw,20px)/1.2 ui-monospace,Consolas,monospace;letter-spacing:.22em;text-align:center;color:#fff;text-shadow:0 0 16px currentColor}
 .transition-caption span{display:block;font-size:.72em;letter-spacing:.35em;margin-top:8px;opacity:.72}
 @media(prefers-reduced-motion:reduce){.transition-bike,.speed-lines,.terminal-window,.code-line{animation:none!important}.code-line{opacity:1}}
+
+
+/* Shared cinematic RPM/tachometer transition */
+#ov{background:#05070c;isolation:isolate}
+#ov[data-to=bike]{background:radial-gradient(ellipse at 50% 45%,#102b42 0,#05070c 68%)}
+#ov[data-to=work]{background:radial-gradient(ellipse at 50% 45%,#17251d 0,#05070c 68%)}
+.rpm-panel{position:absolute;z-index:5;top:50%;left:50%;width:min(88vw,390px);transform:translate(-50%,-50%);padding:18px 22px 20px;border:1px solid #ffffff30;border-radius:22px;background:linear-gradient(145deg,#101722ee,#05080eee);box-shadow:0 24px 90px #000b,0 0 50px #00b4ff22;backdrop-filter:blur(14px);text-align:center;animation:rpm-panel-in .42s ease-out both}
+#ov[data-to=work] .rpm-panel{box-shadow:0 24px 90px #000b,0 0 50px #9cffb022}
+@keyframes rpm-panel-in{from{opacity:0;transform:translate(-50%,-46%) scale(.92);filter:blur(8px)}to{opacity:1;transform:translate(-50%,-50%) scale(1);filter:blur(0)}}
+.rpm-heading{display:flex;justify-content:space-between;align-items:center;color:#aebdca;font:700 10px ui-monospace,Consolas,monospace;letter-spacing:.2em}
+.rpm-heading b{color:#fff;font-size:11px}
+.rpm-gauge{display:block;width:100%;height:auto;margin:4px auto -18px;overflow:visible}
+.rpm-track,.rpm-active{fill:none;stroke-width:10;stroke-linecap:round}
+.rpm-track{stroke:#ffffff18}
+.rpm-active{stroke:url(#rpmGradient);stroke-dasharray:393;stroke-dashoffset:0;opacity:.95}
+.rpm-ticks{fill:none;stroke:#dce7f0;stroke-width:4;stroke-linecap:round;opacity:.72}
+.rpm-needle{fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;transform-origin:160px 155px;transform:rotate(var(--rpm-angle,-126deg));filter:drop-shadow(0 0 7px #00b4ff)}
+#ov[data-to=work] .rpm-needle{filter:drop-shadow(0 0 7px #9cffb0)}
+.rpm-hub{fill:#fff;stroke:#00b4ff;stroke-width:4}
+.rpm-unit{fill:#aebdca;font:700 10px ui-monospace,Consolas,monospace;letter-spacing:2px}
+.rpm-reading{display:flex;justify-content:center;align-items:baseline;gap:8px;margin-top:-2px;color:#fff}
+.rpm-reading strong{font:700 clamp(3.4rem,12vw,5rem)/1 'Racing Sans One','Arial Black',sans-serif;font-variant-numeric:tabular-nums;text-shadow:0 0 24px #00b4ff66}
+.rpm-reading span{font:10px ui-monospace,Consolas,monospace;color:#aebdca;letter-spacing:.12em}
+.rpm-status{margin-top:8px;color:#00b4ff;font:700 10px ui-monospace,Consolas,monospace;letter-spacing:.24em}
+#ov[data-to=work] .rpm-status{color:#9cffb0}
+#ov[data-to=bike] .transition-bike{animation:bike-arrive 1.25s cubic-bezier(.16,1,.3,1) both}
+#ov[data-to=work] .terminal-window{animation:terminal-arrive .85s cubic-bezier(.2,.8,.2,1) both}
+#ov[data-to=work] .speed-lines{opacity:.15}
+@media(max-width:520px){.rpm-panel{width:min(92vw,350px);padding:15px 14px 17px}.transition-scene{gap:18px}.transition-caption{letter-spacing:.12em}.rpm-heading{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.rpm-panel{animation:none!important}}
