@@ -202,3 +202,74 @@
   #ov .transition-bike,#ov .terminal-window{opacity:1;transform:none;filter:none}
   #ov .code-line{opacity:1}
 }
+
+
+/* Focused polish for the original two-world design */
+.work header,.b-head{position:relative;z-index:2}
+.work header .wrap{min-height:62px}
+.work nav a,.b-head nav a{transition:opacity .2s ease,transform .2s ease}
+.work nav a:hover,.b-head nav a:hover{opacity:.68;transform:translateY(-2px)}
+.w-hero{position:relative;isolation:isolate}
+.w-hero:after{content:"";position:absolute;z-index:-1;right:5%;top:8%;width:clamp(140px,24vw,340px);aspect-ratio:1;border:1px solid #1230ff24;border-radius:50%;box-shadow:0 0 0 24px #1230ff08,0 0 0 48px #1230ff05}
+.mq{overflow:hidden;border-block:1px solid #0002;background:#d8dbe1}
+.mq>div{width:max-content;animation:marquee-drift 34s linear infinite;font:700 .78rem ui-monospace,monospace;letter-spacing:.12em;padding:12px 0}
+@keyframes marquee-drift{to{transform:translateX(-50%)}}
+.proj{position:relative;transition:padding .25s ease,background .25s ease}
+.proj:hover{padding-left:16px;background:#ffffff80}
+.proj h3{letter-spacing:-.025em}
+.stack b{font-size:.92rem;transition:transform .18s ease,background .18s ease,color .18s ease}
+.stack b:hover{transform:translateY(-3px);background:#1230ff;color:#fff}
+.two>div{transition:background .2s ease}
+.two>div:hover{background:#f2f4ff}
+.contact{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.contact a{transition:transform .2s ease,box-shadow .2s ease}
+.contact a:hover{transform:translate(-3px,-3px);box-shadow:11px 11px #000}
+.b-head{background:#090b11;border-bottom:1px solid #ffffff20}
+.b-hero{overflow:hidden;min-height:440px}
+.b-hero:after{content:"";position:absolute;inset:auto -10% -75% 28%;height:75%;border-radius:50%;border:1px solid #00b4ff30;box-shadow:0 0 0 26px #00b4ff08,0 0 0 52px #00b4ff05;pointer-events:none}
+.b-hero .wrap{position:relative;z-index:1}
+.ph{border-color:#ffffff45;box-shadow:0 24px 70px #0008}
+.ph img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.ph:hover img{transform:scale(1.045)}
+.carbon{border-radius:3px;box-shadow:0 20px 60px #0006}
+.stat{border-left:2px solid #00b4ff55;padding-left:18px}
+.rides figure{min-width:0;padding:14px;background:#080a0f;border:1px solid #ffffff20;transition:transform .25s ease,border-color .25s ease}
+.rides figure:hover{transform:translateY(-5px);border-color:#00b4ff88}
+.rides .ph{aspect-ratio:16/10}
+.rides figcaption{font-size:clamp(1.2rem,2.6vw,1.7rem)}
+.ride-note{max-width:620px;margin:0 auto;font-size:1.1rem;line-height:1.6;color:#3b3b3b}
+#sound-toggle{position:fixed;left:18px;bottom:78px;z-index:55;display:flex;align-items:center;gap:9px;padding:10px 15px;border:1px solid #ffffff50;border-radius:999px;background:#080b12eF;color:#fff;font:700 11px ui-monospace,Consolas,monospace;letter-spacing:.08em;cursor:pointer;backdrop-filter:blur(12px);box-shadow:0 8px 28px #0005;transition:transform .2s ease,border-color .2s ease,opacity .2s ease}
+#sound-toggle:hover{transform:translateY(-2px);border-color:#00b4ff}
+#sound-toggle[aria-pressed=true]{border-color:#00b4ff;color:#9ce6ff}
+#sound-toggle:disabled{opacity:.5;cursor:wait}
+.sound-icon{font-size:16px;line-height:1}
+#thr{box-shadow:0 10px 32px #0007;transition:transform .2s ease,box-shadow .2s ease}
+#thr:hover{transform:translateY(-2px);box-shadow:0 14px 38px #0009}
+#thr:disabled{opacity:.65;cursor:wait}
+#hud{border-radius:4px;font-variant-numeric:tabular-nums}
+@media(max-width:700px){
+  .work header .wrap,.b-head .wrap{align-items:flex-start;gap:14px;flex-direction:column}
+  .work nav,.b-head nav{width:100%;gap:16px;overflow-x:auto;white-space:nowrap;padding-bottom:3px}
+  .work nav a,.b-head nav a{font-size:.88rem}
+  .w-hero .row{grid-template-columns:1fr;gap:18px}
+  .tag{justify-self:start;font-size:1rem;max-width:100%;box-shadow:5px 5px #000}
+  .contact{grid-template-columns:1fr}
+  .b-hero{padding:44px 0 64px;min-height:0}
+  .b-hero .wrap{grid-template-columns:1fr;gap:24px}
+  .b-hero .ph{max-width:620px}
+  .carbon{grid-template-columns:1fr 1fr}
+  .carbon h2,.liv{grid-column:1/-1}
+  #sound-toggle{left:12px;bottom:76px}
+  #thr{right:12px;bottom:12px}
+  #hud{left:12px;bottom:16px}
+}
+@media(max-width:390px){
+  .carbon{grid-template-columns:1fr}
+  .carbon h2,.liv{grid-column:auto}
+  #sound-toggle{bottom:72px}
+  #sound-toggle span:last-child{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .mq>div{animation:none}
+  .proj,.stack b,.two>div,.contact a,.ph img,.rides figure,#thr,#sound-toggle{transition:none}
+}
