@@ -385,3 +385,52 @@
 
 /* The RPM telemetry belongs only to the Ride arrival transition. */
 #ov[data-to=work] .rpm-panel{display:none!important}
+
+
+/* R15-inspired tachometer: keep the transition focused on the RPM display only. */
+#ov .rpm-panel{
+  width:min(82vw,440px);
+  padding:15px 18px 13px;
+  border:1px solid #ffffff24;
+  border-radius:8px;
+  background:linear-gradient(180deg,#111923f2,#05090ff5);
+  box-shadow:0 18px 70px #000b,0 0 34px #00b4ff18;
+}
+#ov .rpm-meter{width:100%;margin:0 auto;text-align:left}
+#ov .rpm-meter-labels{
+  display:flex;justify-content:space-between;gap:5px;
+  padding:0 1px;color:#c4d0dc;
+  font:700 10px ui-monospace,Consolas,monospace;
+}
+#ov .rpm-meter-track{
+  position:relative;height:23px;margin:7px 0 0;
+  border:1px solid #8796a655;border-radius:2px;
+  background:#02060b;overflow:hidden;
+  box-shadow:inset 0 2px 7px #000c;
+}
+#ov .rpm-meter-fill{
+  height:100%;width:var(--rpm-level,0%);
+  border-radius:0;
+  background:
+    repeating-linear-gradient(90deg,transparent 0 13px,#05090f 13px 16px),
+    linear-gradient(90deg,#13a9f4 0%,#32d6ad 58%,#f5d34e 82%,#ef414b 100%);
+  box-shadow:0 0 13px #00baff55;
+  transition:width .045s linear;
+}
+#ov .rpm-meter-marker{display:none}
+#ov .rpm-reading{margin-top:9px;gap:6px}
+#ov .rpm-reading strong{
+  font:700 clamp(1.8rem,5vh,2.7rem)/1 'Racing Sans One','Arial Black',sans-serif;
+  color:#f3f7fb;text-shadow:0 0 15px #00b4ff45;
+}
+#ov .rpm-reading span{
+  color:#9eafbd;font:700 9px ui-monospace,Consolas,monospace;
+  letter-spacing:.12em;
+}
+@media(max-width:600px){
+  #ov .rpm-panel{width:min(88vw,340px);padding:11px 12px 10px}
+  #ov .rpm-meter-track{height:18px;margin-top:6px}
+  #ov .rpm-meter-labels{font-size:9px}
+  #ov .rpm-reading{margin-top:7px}
+}
+@media(prefers-reduced-motion:reduce){#ov .rpm-meter-fill{transition:none}}
