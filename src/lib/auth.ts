@@ -34,6 +34,13 @@ export function clearAdminCookie(res: NextResponse) {
 export function hasValidAdminConfiguration() { return Boolean(process.env.ADMIN_PASSWORD && process.env.ADMIN_PASSWORD.length >= 12 && process.env.SESSION_SECRET && process.env.SESSION_SECRET.length >= 32) }
 export function isSameOriginMutation(req: NextRequest) {
   const origin = req.headers.get('origin')
-  if (!origin) return false
-  try { return new URL(origin).origin === req.nextUrl.origin } catch { return false }
+  const host = req.headers.get('x-forwarded-host')?.split(',')[0]?.trim() || req.headers.get('host')
+  const protocol = req.headers.get('x-forwarded-proto')?.split(',')[0]?.trim() || req.nextUrl.protocol.replace(':', '')
+  if (!origin || !host || !['http', 'https'].includes(protocol)) return false
+  try {
+    const originUrl = new URL(origin)
+    return originUrl.origin === `${protocol}://${host}`
+  } catch {
+    return false
+  }
 }
