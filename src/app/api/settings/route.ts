@@ -1,0 +1,6 @@
+import {NextRequest,NextResponse} from 'next/server'
+import {prisma} from '@/lib/db'
+import {isAdminRequest,isSameOriginMutation} from '@/lib/auth'
+const defaults={siteName:'SANDESH CHHETRI',role:'SYSTEMS / SOFTWARE / OPEN ROADS',intro:'I build, support and improve the systems people rely on. When the work is done, I take the long way home.',accentWork:'#d5a66f',accentRide:'#df542f',sections:{work:true,projects:true,experience:true,skills:true,motorcycle:true,journeys:true,gallery:true,contact:true}}
+export async function GET(){try{const row=await prisma.siteSettings.findUnique({where:{id:1}});return NextResponse.json(row?.data||defaults,{headers:{'Cache-Control':'no-store'}})}catch{return NextResponse.json(defaults)}}
+export async function PUT(req:NextRequest){if(!isAdminRequest(req))return NextResponse.json({error:'Login required'},{status:401});if(!isSameOriginMutation(req))return NextResponse.json({error:'Invalid request origin'},{status:403});try{const b=await req.json(),data={...defaults,...b,sections:{...defaults.sections,...(b.sections||{})}};const row=await prisma.siteSettings.upsert({where:{id:1},create:{id:1,data},update:{data}});return NextResponse.json(row.data)}catch{return NextResponse.json({error:'Unable to save settings'},{status:400})}}
