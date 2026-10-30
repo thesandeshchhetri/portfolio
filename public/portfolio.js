@@ -6,6 +6,7 @@
   const ov=document.getElementById('ov');
   const rpmValue=document.getElementById('rpm-value');
   const rpmStatus=document.getElementById('rpm-status');
+  const rpmPanel= document.querySelector('.rpm-panel');
   const bar=document.getElementById('bar');
   const soundBtn=document.getElementById('sound-toggle');
   const soundLabel=document.getElementById('sound-label');
@@ -107,6 +108,8 @@
     const normalized=clamp((rpm-1000)/9000,0,1);
     const angle=-55+normalized*110;
     ov.style.setProperty('--rpm-angle',angle+'deg');
+    ov.style.setProperty('--rpm-level',(normalized*100)+'%');
+    ov.dataset.phase=direction==='bike'?'ride':'work';
     ov.style.setProperty('--transition-progress',String(progress));
     if(rpmValue)rpmValue.textContent=(rpm/1000).toFixed(1);
     if(rpmStatus){
@@ -124,6 +127,7 @@
     const direction=to==='bike'?'bike':'work';
     const engine=soundEnabled?engineStart(direction):null;
     ov.dataset.to=to;
+    ov.dataset.direction=direction;
     ov.style.setProperty('--transition-progress','0');
     ov.classList.remove('on');
     void ov.offsetWidth;
