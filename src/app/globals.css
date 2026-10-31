@@ -497,7 +497,7 @@
 .adm-record-id,.adm-count{font:700 11px ui-monospace,monospace;color:#9ce5ff;border:1px solid #ffffff25;padding:7px 9px;border-radius:4px}
 .adm-form{display:grid;gap:15px}
 .adm-form label,.adm-login label{display:grid;gap:7px;color:#cbd6e0;font-size:12px;font-weight:650}
-.adm-form input,.adm-form textarea,.adm-search input,.adm-login input{box-sizing:border-box;width:100%;min-width:0;border:1px solid #ffffff25;border-radius:5px;background:#070b10;color:#f2f7fb;padding:12px 13px;font:14px/1.5 inherit;outline:none}
+.adm-form input,.adm-form textarea,.adm-search input,.adm-login input{box-sizing:border-box;width:100%;min-width:0;border:1px solid #ffffff25;border-radius:5px;background:#070b10;color:#f2f7fb;padding:12px 13px;font:inherit;font-size:14px;line-height:1.5;outline:none}
 .adm-form input:focus,.adm-form textarea:focus,.adm-search input:focus,.adm-login input:focus{border-color:#00baff;box-shadow:0 0 0 3px #00baff18}
 .adm-form textarea{resize:vertical;min-height:100px}
 .adm-form input[type=file]{font-size:12px}
