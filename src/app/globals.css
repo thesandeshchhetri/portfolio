@@ -434,3 +434,37 @@
   #ov .rpm-reading{margin-top:7px}
 }
 @media(prefers-reduced-motion:reduce){#ov .rpm-meter-fill{transition:none}}
+
+
+/* Reliable full-frame Work arrival: no empty half-screen during Ride -> Work. */
+#ov[data-to=work]{background:#050b08!important}
+#ov[data-to=work] .work-scene{
+  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  padding:clamp(18px,5vw,64px)!important;
+  background:
+    radial-gradient(ellipse at 50% 48%,#173b28 0%,#0b1710 48%,#030705 100%)!important;
+  opacity:1!important;visibility:visible!important;
+}
+#ov[data-to=work] .work-scene:before{
+  inset:0!important;opacity:.5!important;
+  background-size:clamp(22px,3vw,38px) clamp(22px,3vw,38px)!important;
+  mask-image:radial-gradient(ellipse at center,#000 0%,#000 48%,transparent 100%)!important;
+}
+#ov[data-to=work] .terminal-window{
+  display:block!important;visibility:visible!important;opacity:1;
+  width:min( min(88vw,760px), calc(100vw - 36px) )!important;
+  max-width:760px!important;min-height:250px;
+  margin:auto!important;z-index:4!important;
+}
+#ov[data-to=work] .terminal-code{min-height:170px}
+#ov[data-to=work] .transition-caption{position:relative;z-index:4;margin-top:4px}
+#ov[data-to=work] .work-scene:after{z-index:5!important}
+@media(max-width:600px){
+  #ov[data-to=work] .work-scene{padding:18px!important;gap:18px!important}
+  #ov[data-to=work] .terminal-window{width:100%!important;min-height:220px}
+  #ov[data-to=work] .terminal-code{min-height:150px;padding:18px 14px}
+}
+@media(prefers-reduced-motion:reduce){
+  #ov[data-to=work] .terminal-window{opacity:1!important;transform:none!important;filter:none!important}
+}
